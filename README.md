@@ -1,8 +1,8 @@
-# Laravel-Lumen Rest API
+# Laravel-Lumen Rest API with Token
 
-> ### Lumen + MySQL codebase containing examples (CRUD, auth, advanced patterns, etc).
+> ### Lumen + MySQL codebase containing examples (CRUD, auth, advanced patterns, validation, migration, seeding, etc).
 
-This codebase was created to demonstrate a fully functional REST API built with **Lumen + MySQL**, including CRUD operations, routing,validation, pagination, and more.
+This codebase was created to demonstrate a fully functional REST API built with **Lumen + MySQL**, including CRUD operations, routing,validation, pagination, migration, seeding and more.
 
 Hope you'll find this example helpful. Pull requests are welcome!
 
@@ -17,11 +17,11 @@ Please check the official Lumen installation guide for server requirements befor
 
 Clone the repository
 
-    git clone https://github.com/rais-manasiya/laravel-lumen-rest-api.git
+    git clone https://github.com/rais-manasiya/laravel-lumen-rest-api-with-token.git
 
 Switch to the repo folder
 
-    cd laravel-lumen-rest-api
+    cd laravel-lumen-rest-api-with-token
 
 Install all the dependencies using composer
 
@@ -39,6 +39,10 @@ Run the database migrations (**Set the database connection in .env before migrat
 
     php artisan migrate
 
+Run the database seeding to generate user for authentication
+
+    php artisan db:seed
+
 Start the local development server
 
     php -S localhost:8000 -t public
@@ -47,7 +51,7 @@ You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
-    git clone https://github.com/rais-manasiya/laravel-lumen-rest-api.git
+    git clone https://github.com/rais-manasiya/laravel-lumen-rest-api-with-token.git
     cd laravel-lumen-rest-api
     composer install
     cp .env.example .env
@@ -56,6 +60,7 @@ You can now access the server at http://localhost:8000
 **Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
 
     php artisan migrate
+    php artisan db:seed
     php -S localhost:8000 -t public
 
 ***Note*** : First time database table will be an empty, You will have to insert data using post method
@@ -64,6 +69,7 @@ You can now access the server at http://localhost:8000
 
 - `app` - Contains all the Eloquent models
 - `app/Http/Controllers` - Contains all the api controllers
+- `app/Providers` - Contains all the service providers
 - `config` - Contains all the application configuration files
 - `database/migrations` - Contains all the database migrations
 - `routes` - Contains all the api routes defined in web.php file
@@ -89,8 +95,40 @@ The api can now be accessed at
 ### API Routes
 | HTTP Method	| Path | Action | Scope | Desciption  |
 | ----- | ----- | ----- | ---- |------------- |
-| GET      | /participants | index | participants:list | Get all participants
-| POST     | /participants | store | participants:create | Create an participant
-| GET      | /participants/{id} | show | participants:read |  Fetch an participant by id
-| PUT      | /participants/{id} | update | participants:write | Update an participant by id
-| DELETE      | /participants/{id} | destroy | participants:delete | Delete an participant by id
+| POST      | /api/login | auth | users:authenticate | Get token to begin with 
+| GET      | /api/participants | show | participants:list | Get all participants
+| POST     | /api/participants | store | participants:create | Create an participant
+| GET      | /api/participants/{id} | show | participants:read |  Fetch an participant by id
+| PUT      | /api/participants/{id} | update | participants:write | Update an participant by id
+| DELETE      | /api/participants/{id} | destroy | participants:delete | Delete an participant by id
+
+### API Usage
+
+Credentials for login api: email=rais.manasiya786@gmail.com password=123456
+
+    GET http://localhost:8000/api/login
+
+
+Credentials for login api: email=rais.manasiya786@gmail.com password=123456
+
+   POST http://localhost:8000/api/participants
+   
+headers: Authorization= token (eg: bearer Abcedssd......)
+   
+Post Parameters:-
+
+name:Rais
+age:30 (only Integer)
+dob:1989-12-18 (Date format validation has given)
+profession:Student/Employed (Fixed value)
+locality:Mumbai
+no_of_guests:2 (Range between 1-10)
+address:Goregaon (max 50 charachter allowed)
+
+Validation, pagination and soft delete features are added
+
+
+
+
+
+
