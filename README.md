@@ -118,8 +118,14 @@ To fetch all participants
     headers: 
     Authorization= TOKEN (eg: bearer Abcedssd......)
    
-Post Parameters:-
-
+To Add new participant
+    
+    Post http://localhost:8000/api/participants
+   
+    Headers Parameters:- 
+    Authorization= TOKEN (eg: bearer Abcedssd......)
+    
+    Post Parameters:-
     name:Rais
     age:30 (only Integer)
     dob:1989-12-18 (Date format validation has given)
