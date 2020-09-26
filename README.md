@@ -111,19 +111,19 @@ Credentials for login api: email=rais.manasiya786@gmail.com password=123456
 
 Credentials for login api: email=rais.manasiya786@gmail.com password=123456
 
-   POST http://localhost:8000/api/participants
+    POST http://localhost:8000/api/participants
    
 headers: Authorization= token (eg: bearer Abcedssd......)
    
 Post Parameters:-
 
-name:Rais
-age:30 (only Integer)
-dob:1989-12-18 (Date format validation has given)
-profession:Student/Employed (Fixed value)
-locality:Mumbai
-no_of_guests:2 (Range between 1-10)
-address:Goregaon (max 50 charachter allowed)
+    name:Rais
+    age:30 (only Integer)
+    dob:1989-12-18 (Date format validation has given)
+    profession:Student/Employed (Fixed value)
+    locality:Mumbai
+    no_of_guests:2 (Range between 1-10)
+    address:Goregaon (max 50 charachter allowed)
 
 Validation, pagination and soft delete features are added
 
