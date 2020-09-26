@@ -110,11 +110,13 @@ Credentials for login api: email=rais.manasiya786@gmail.com password=123456
     
     email=rais.manasiya786@gmail.com 
     password=123456
+ 
+To fetch all participants
 
-
-    POST http://localhost:8000/api/participants
+    GET http://localhost:8000/api/participants
    
-headers: Authorization= token (eg: bearer Abcedssd......)
+    headers: 
+    Authorization= TOKEN (eg: bearer Abcedssd......)
    
 Post Parameters:-
 
