@@ -106,10 +106,11 @@ The api can now be accessed at
 
 Credentials for login api: email=rais.manasiya786@gmail.com password=123456
 
-    GET http://localhost:8000/api/login
+    POST http://localhost:8000/api/login
+    
+    email=rais.manasiya786@gmail.com 
+    password=123456
 
-
-Credentials for login api: email=rais.manasiya786@gmail.com password=123456
 
     POST http://localhost:8000/api/participants
    
